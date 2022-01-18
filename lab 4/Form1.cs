@@ -23,13 +23,13 @@ namespace lab_4
                 switch (rnd.Next() % 3) // генерирую случайное число от 0 до 2 (ну остаток от деления на 3)
                 {
                     case 0: // если 0, то мандарин
-                        this.plantsList.Add(Flower.Generate());
+                        this.plantsList.Add(Flower.Generate(rnd.Next()));
                         break;
                     case 1: // если 1 то виноград
-                        this.plantsList.Add(Bush.Generate());
+                        this.plantsList.Add(Bush.Generate(rnd.Next()));
                         break;
                     case 2: // если 2 то арбуз
-                        this.plantsList.Add(Tree.Generate());
+                        this.plantsList.Add(Tree.Generate(rnd.Next()));
                         break;
                         // появление других чисел маловероятно
                 }

@@ -8,31 +8,34 @@ namespace lab_4
 {
     public enum Color
     {   
-        Red,
-        Green,
-        Blue,
-        White,
-        Yellow,
-        Pink,
-        Purple,
-        Orange,
-        Burgundy
+        Красный,
+        Зеленый,
+        Желтый,
+        Белый,
+        Жёлтый,
+        Розовый,
+        Фиолетовый,
+        Бордовый,
+        Оранжевый,
+        Синий        
     }
+
     public enum Type
     {
-        Rose,
-        GoldenDaisy,
-        Chamomile,
-        Peonies,
-        Lilies,
-        Tulips,
-        Gerbera,
-        Asters
+        Роза,
+        Хризантема,
+        Пион,
+        Лилия,
+        Тюльпан,
+        Гербера,
+        Ландыш,
+        Астра
     }
+
     public enum Kind
     {
-        Coniferous,
-        Leafy
+        Хвойный,
+        Лиственный
     }
 
     public abstract class Plants 
@@ -48,16 +51,11 @@ namespace lab_4
         public Color Color;
         public Type Type;
 
-        public override string GetInfo()
+        public static Flower Generate(int randomSeed)
         {
-            var str = "Цветок";
-            str += String.Format("\nВысота:{0}", this.Hieght);
-            return str;
-        }
+            // рандом зависит от времени
+            var rnd = new Random(randomSeed);
 
-        public static Flower Generate()
-        {
-            var rnd = new Random();
             return new Flower
             {
                 Hieght = rnd.Next(1, 10) / 10.0f,
@@ -65,6 +63,18 @@ namespace lab_4
                 Color = (Color)rnd.Next(0, 8),
                 Type = (Type)rnd.Next(0, 7)
             };
+        }
+
+        public override string GetInfo()
+        {
+            var str = "Цветок";
+            str += String.Format("\nВысота:{0} м.", this.Hieght);
+            str += String.Format("\nКоличество лепестков:{0}", this.CountPetals);
+            str += String.Format("\nЦвет:{0}", this.Color);
+            str += String.Format("\nВид цветка:{0}", this.Type);
+
+
+            return str;
         }
     }
 
@@ -76,13 +86,21 @@ namespace lab_4
         public override string GetInfo()
         {
             var str = "Куст";
-            str += String.Format("\nВысота:{0}", this.Hieght);
+            str += String.Format("\nВысота:{0} м.", this.Hieght);
+            // ? : - сокращенная форма if else
+            str += String.Format("\nНаличие цветков:{0}", this.HasFlowers == true ? "есть" : "нет");
+            str += String.Format("\nКоличество веток:{0}", this.CountBranches);
             return str;
         }
 
-        public static Bush Generate()
+        /// <summary>
+        /// Метод генерации случайных чисел для класса кустарники
+        /// </summary>
+        /// <param name="randomSeed">параметр для случайной генерации</param>
+        /// <returns></returns>
+        public static Bush Generate(int randomSeed)
         {
-            var rnd = new Random();
+            var rnd = new Random(randomSeed);
             return new Bush
             {
                 Hieght = rnd.Next(3, 15) / 10.0f,
@@ -100,13 +118,15 @@ namespace lab_4
         public override string GetInfo()
         {
             var str = "Дерево";
-            str += String.Format("\nВысота:{0}", this.Hieght);
+            str += String.Format("\nВысота:{0} м.", this.Hieght);
+            str += String.Format("\nТип:{0}", this.Kind);
+            str += String.Format("\nРадиус:{0} м.", this.Radius);
             return str;
         }
 
-        public static Tree Generate()
+        public static Tree Generate(int randomSeed)
         {
-            var rnd = new Random();
+            var rnd = new Random(randomSeed);
             return new Tree
             {
                 Hieght =  rnd.Next(10, 200) / 10.0f,

@@ -76,13 +76,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(264, 190);
             this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.btnGet);
             this.Controls.Add(this.txtOut);
             this.Controls.Add(this.btnRefill);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Витрина";
             this.ResumeLayout(false);
 
         }
